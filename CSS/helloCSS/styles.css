@@ -1,0 +1,36 @@
+body
+{
+    font-family: sans-serif;
+    background-color: white;
+}
+
+h1, h2, h3
+{
+    color: lightgray;
+    background-color: white;
+}
+
+p
+{
+    font-size: 14pt;
+}
+
+.warning
+{
+    background-color: lightcoral;
+}
+
+table
+{
+    border: gray solid;
+}
+
+tr: nth-child(even) 
+{
+    background-color: red;
+}
+
+td: nth-child(even)
+{
+    background-color: blue;
+}
