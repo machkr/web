@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello, JS!</title>
+</head>
+<body>
+    <h1>Hello, JS!</h1>
+    <!--    <button onclick="clicked()">Button</button>-->
+    <!--    <button onclick="alert('Button activated!');">Button</button>-->
+    <button id="butt">Button</button>
+    <script>
+        function clicked()
+        {
+            alert('Button activated!');
+        }
+        
+        let butt = document.getElementById("butt");
+        butt.onclick = clicked;
+    </script>
+</body>
+</html>
