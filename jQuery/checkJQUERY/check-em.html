@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Check em</title>
+    <style>
+        #checkset
+        {
+            background: cadetblue;
+            color: white;
+        }
+    </style>
+    <script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>">
+    <script defer>
+        $(document).ready( () =>
+        {
+            $('#checkem').change((evt)  =>
+            {
+                $('#checkem').next().text($('#checkem').checked ? "Clear All" : "Select All");
+                $("[name='month']").prop('checked', evt.target.checked);    
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h1>Check em</h1>
+
+    <span id="checkset">
+        <input type="checkbox" id="checkem">
+        <label for="checkem">Check all</label>
+    </span><br />
+
+    <input type="checkbox" name="month" value="January" id="jan">
+    <label for="jan">January</label>
+    <br />
+
+    <input type="checkbox" name="month" value="February" id="feb">
+    <label for="feb">February</label>
+    <br />
+
+    <input type="checkbox" name="month" value="March" id="mar">
+    <label for="mar">March</label>
+    <br />
+
+    <input type="checkbox" name="month" value="April" id="apr">
+    <label for="apr">April</label>
+    <br />
+
+    <input type="checkbox" name="month" value="May" id="may">
+    <label for="may">May</label>
+    <br />
+
+    <input type="checkbox" name="month" value="June" id="jun">
+    <label for="jun">June</label>
+    <br />
+
+    <input type="checkbox" name="month" value="July" id="jul">
+    <label for="jul">July</label>
+    <br />
+
+    <input type="checkbox" name="month" value="August" id="aug">
+    <label for="aug">August</label>
+    <br />
+
+    <input type="checkbox" name="month" value="September" id="sep">
+    <label for="sep">September</label>
+    <br />
+
+    <input type="checkbox" name="month" value="October" id="oct">
+    <label for="oct">October</label>
+    <br />
+
+    <input type="checkbox" name="month" value="November" id="nov">
+    <label for="nov">November</label>
+    <br />
+
+    <input type="checkbox" name="month" value="December" id="dec">
+    <label for="dec">December</label>
+    <br />
+</body>
+
+</html>
