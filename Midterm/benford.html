@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Benford</title>
+    <script src="higher-hw.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+        google.charts.load('current', {'packages': ['corechart', 'bar']});
+        
+        google.charts.setOnLoadCallback(config);
+        
+        function config()
+        {
+            
+            let data = new google.visualization.DataTable();
+            
+            data.addColumn('number', 'Digit');
+            data.addColumn('number', 'Library Books');
+            data.addRows([...toPercentages(benford(librarybooks))]);
+            addBenford();
+
+            // Add Benford data to data table
+            function addBenford()
+            {
+                data.addColumn('number', 'Benford');
+                data.setCell(0, 2, 0.301);
+                data.setCell(1, 2, 0.176);
+                data.setCell(2, 2, 0.125);
+                data.setCell(3, 2, 0.097);
+                data.setCell(4, 2, 0.079);
+                data.setCell(5, 2, 0.067);
+                data.setCell(6, 2, 0.058);
+                data.setCell(7, 2, 0.051);
+                data.setCell(8, 2, 0.046);
+            }
+            
+            // Redraw the data table given the dataset and its name
+            function redraw(dataset, name)
+            {
+                data.removeColumns(1, 2);
+                data.addColumn('number', name);
+                data.addRows([...toPercentages(benford(dataset))]);
+                
+                addBenford();
+
+                chart.draw(data, options);
+            }
+                    
+            let options =
+            {
+
+                title: 'Benford\'s Law',
+                
+                animation:
+                {
+                    duration: 2000,
+                    easing: 'inAndOut',
+                    startup: 'true'
+                },
+                
+                colors: ['#0598d8', '#f97263'],
+                
+                hAxis:
+                {
+                    title: 'Digit',
+                    ticks: [1,2,3,4,5,6,7,8,9]
+                },
+                
+                vAxis:
+                {
+                    format: 'percent',
+                    title: 'Percent'
+                },
+            };
+            
+            let chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+            
+            document.getElementById('dataset').onchange = function()
+            {
+                var dataset;
+                var name;
+                
+                switch (this.value)
+                {
+                    case "livejournal":
+                        dataset = livejournal;
+                        name = "Live Journal";
+                        break;
+
+                    case "librarybooks":
+                        dataset = librarybooks;
+                        name = "Library Books";
+                        break;
+
+                    case "sunspots":
+                        dataset = sunspots;
+                        name = "Sunspots";
+                        break;
+
+                    default: 
+                        break;
+
+                }
+                
+                redraw(dataset, name);
+            };
+        }
+    </script>
+</head>
+<body>
+    <select id="dataset">
+        <option value="librarybooks">Library Books</option>
+        <option value="livejournal">Live Journal</option>
+        <option value="sunspots">Sunspots</option>
+    </select>
+    <div id="chart_div"></div>
+</body>
+</html>
